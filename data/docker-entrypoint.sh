@@ -3,7 +3,7 @@ set -e
  
 ## from redis-5.0
 # Redis서버에 접근가능한 Host를 설정합니다.
-sed -i "s/bind 127.0.0.1/bind $CLIENTHOST 127.0.0.1/g" /boyj/redis.conf
+sed -i "s/bind 127.0.0.1/bind $CLIENTHOST/g" /boyj/redis.conf
 
 ### redis port inside redis.conf
 #redis.conf 파일의 port 6379 문자열을 port $CLINETPORT로 변경합니다. 

@@ -18,7 +18,8 @@ sed -i "s/port 6379/port $CLIENTPORT/g" /boyj/redis.conf
 ### slaveof <masterip> <masterport> => slaveof $MASTERHOST $MASTERPORT
 # $MASTERPORT가 공백이 아닌 Container에 대해 slaveof 설정을 통해 Master-Slave 설정을 합니다.
 if [ "$MASTERPORT" != "" ];then
-    sed -i "s/# slaveof <masterip> <masterport>/slaveof $MASTERHOST $MASTERPORT/g" /boyj/redis.conf  
+    echo "im slave"
+    sed -i "s/# replicaof <masterip> <masterport>/replicaof $MASTERHOST $MASTERPORT/g" /boyj/redis.conf  
 fi
  
 # first arg is `-f` or `--some-option`

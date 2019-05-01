@@ -23,7 +23,7 @@ services:
       volumes:
         - ./data:/data
 
-    slave:
+    slave1:
       image: boyj-redis
       container_name: slave1
 
@@ -42,6 +42,30 @@ services:
 
       ports:
         - 6380:6380
+
+      volumes:
+        - ./data:/data
+
+
+    slave2:
+      image: boyj-redis
+      container_name: slave2
+
+      network_mode : host
+
+      build:
+        context: .
+        dockerfile: Dockerfile
+
+      environment:
+        #- REQUIREPASS=password1234
+        - MASTERHOST=127.0.0.1
+        - MASTERPORT=6379
+        - CLIENTHOST=127.0.0.1
+        - CLIENTPORT=6381
+
+      ports:
+        - 6381:6381
 
       volumes:
         - ./data:/data
